@@ -10,9 +10,9 @@ public class Statistician {
 		return Statistics.create();
 	}
 
-	public Statistics compute(Statistics currentStats, Stream<DiagnosticDataPoint> dataPoints) {
+	public Statistics compute(Statistics currentStats, Iterable<DiagnosticDataPoint> dataPoints) {
 		Statistics finalStats = currentStats;
-		for (DiagnosticDataPoint dataPoint : (Iterable<DiagnosticDataPoint>) dataPoints::iterator)
+		for (DiagnosticDataPoint dataPoint : dataPoints)
 			finalStats = finalStats.merge(dataPoint);
 		return finalStats;
 	}

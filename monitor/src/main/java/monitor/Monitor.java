@@ -48,8 +48,9 @@ public class Monitor {
 	}
 
 	private void updateStatistics() {
-		Stream<DiagnosticDataPoint> newDataPoints = serviceObservers.stream()
-				.map(ServiceObserver::gatherDataFromService);
+		List<DiagnosticDataPoint> newDataPoints = serviceObservers.stream()
+				.map(ServiceObserver::gatherDataFromService)
+				.collect(toList());
 		Statistics newStatistics = statistician.compute(currentStatistics, newDataPoints);
 		currentStatistics = newStatistics;
 		repository.store(newStatistics);
