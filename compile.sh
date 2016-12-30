@@ -3,9 +3,9 @@
 echo "--- COMPILATION & PACKAGING ---"
 
 echo " > creating clean directories"
-rm -r classes
+rm -rf classes
 mkdir classes
-rm -r mods
+rm -rf mods
 mkdir mods
 
 echo " > creating monitor.observer"
