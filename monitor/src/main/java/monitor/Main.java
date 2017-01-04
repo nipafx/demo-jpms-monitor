@@ -1,5 +1,6 @@
 package monitor;
 
+// import monitor.observer.DisconnectedServiceObserver;
 import monitor.observer.ServiceObserver;
 import monitor.observer.alpha.AlphaServiceObserver;
 import monitor.observer.beta.BetaServiceObserver;
@@ -8,6 +9,7 @@ import monitor.rest.MonitorServer;
 import monitor.statistics.Statistician;
 import monitor.statistics.Statistics;
 
+import java.lang.reflect.Constructor;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Executors;
@@ -19,7 +21,11 @@ import static java.util.stream.Collectors.toList;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		Object observer = createDisconnected();
+		if (observer != null)
+			System.exit(0);
+
 		Monitor monitor = createMonitor();
 
 		MonitorServer server = MonitorServer
@@ -34,6 +40,15 @@ public class Main {
 				},
 				10,
 				TimeUnit.SECONDS);
+	}
+
+	private static Object createDisconnected() throws Exception {
+//		return new DisconnectedServiceObserver();
+		Constructor<?> constructor = Class
+				.forName("monitor.observer.DisconnectedServiceObserver")
+				.getDeclaredConstructor();
+		constructor.setAccessible(true);
+		return constructor.newInstance();
 	}
 
 	private static Monitor createMonitor() {
