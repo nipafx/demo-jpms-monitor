@@ -3,6 +3,7 @@ package monitor;
 import monitor.observer.ServiceObserver;
 import monitor.observer.alpha.AlphaServiceObserver;
 import monitor.observer.beta.BetaServiceObserver;
+import monitor.observer.dis.DisconnectedServiceObserver;
 import monitor.persistence.StatisticsRepository;
 import monitor.rest.MonitorServer;
 import monitor.statistics.Statistician;
@@ -19,7 +20,11 @@ import static java.util.stream.Collectors.toList;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		Object observer = createDisconnected();
+		if (observer != null)
+			System.exit(0);
+
 		Monitor monitor = createMonitor();
 
 		MonitorServer server = MonitorServer
@@ -34,6 +39,10 @@ public class Main {
 				},
 				10,
 				TimeUnit.SECONDS);
+	}
+
+	private static DisconnectedServiceObserver createDisconnected() throws Exception {
+		return new DisconnectedServiceObserver();
 	}
 
 	private static Monitor createMonitor() {
