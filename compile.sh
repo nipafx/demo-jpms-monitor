@@ -72,5 +72,5 @@ javac9 \
 	$(find monitor -name '*.java')
 jar9 --create \
 	--file mods/monitor.jar \
-	--main-class monitor.Monitor \
+	--main-class monitor.Main \
 	-C classes/monitor .
