@@ -54,6 +54,17 @@ jar9 --create \
 	--file mods/monitor.persistence.jar \
 	-C classes/monitor.persistence .
 
+echo " > creating monitor.rest"
+# spark is required as an automatic module, so copy it to mods
+cp libs/spark-core-* mods/spark.core.jar
+javac9 \
+	--module-path mods \
+	-d classes/monitor.rest \
+	$(find monitor.rest -name '*.java')
+jar9 --create \
+	--file mods/monitor.rest.jar \
+	-C classes/monitor.rest .
+
 echo " > creating monitor"
 javac9 \
 	--module-path mods \
