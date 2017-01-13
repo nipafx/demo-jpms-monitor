@@ -8,6 +8,6 @@ echo ""
 
 # the classpath is needed for Spark's dependencies
 java9 \
-	-p mods \
-	-cp "libs/*" \
-	-m monitor
+	--module-path mods \
+	--class-path "libs/*" \
+	--module monitor
