@@ -3,29 +3,40 @@
 echo "--- COMPILATION & PACKAGING ---"
 
 echo " > creating clean directories"
-rm -rf multi-src
-mkdir multi-src
-mkdir multi-src/monitor
-mkdir multi-src/monitor.observer
-mkdir multi-src/monitor.observer.alpha
-mkdir multi-src/monitor.observer.beta
-mkdir multi-src/monitor.persistence
-mkdir multi-src/monitor.rest
-mkdir multi-src/monitor.statistics
+rm -rf classes
+mkdir classes
+rm -rf mods
+mkdir mods
 
-echo " > copying source files"
-cp -r monitor/src/main/java/* multi-src/monitor
-cp -r monitor.observer/src/main/java/* multi-src/monitor.observer
-cp -r monitor.observer.alpha/src/main/java/* multi-src/monitor.observer.alpha
-cp -r monitor.observer.beta/src/main/java/* multi-src/monitor.observer.beta
-cp -r monitor.persistence/src/main/java/* multi-src/monitor.persistence
+echo " > multi-compiling modules"
+# spark is required as an automatic module, so copy it to mods
 cp libs/spark-core-* mods/spark.core.jar
-cp -r monitor.rest/src/main/java/* multi-src/monitor.rest
-cp -r monitor.statistics/src/main/java/* multi-src/monitor.statistics
-
-echo " > compiling multiple modules"
 javac9 \
 	--module-path mods \
-	--module-source-path multi-src \
+	--module-source-path "./*/src/main/java" \
 	-d classes \
-	$(find multi-src -name '*.java')
+	--module monitor
+
+echo " > packaging modules"
+jar9 --create \
+	--file mods/monitor.observer.jar \
+	-C classes/monitor.observer .
+jar9 --create \
+	--file mods/monitor.observer.alpha.jar \
+	-C classes/monitor.observer.alpha .
+jar9 --create \
+	--file mods/monitor.observer.beta.jar \
+	-C classes/monitor.observer.beta .
+jar9 --create \
+	--file mods/monitor.statistics.jar \
+	-C classes/monitor.statistics .
+jar9 --create \
+	--file mods/monitor.persistence.jar \
+	-C classes/monitor.persistence .
+jar9 --create \
+	--file mods/monitor.rest.jar \
+	-C classes/monitor.rest .
+jar9 --create \
+	--file mods/monitor.jar \
+	--main-class monitor.Main \
+	-C classes/monitor .
