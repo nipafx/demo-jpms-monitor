@@ -4,7 +4,7 @@
     <ghcPath>/usr/lib/ghc/bin/ghc</ghcPath>
     <cabalPath>/usr/bin/cabal</cabalPath>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="true" project-jdk-name="9-b146-no-jigsaw" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="true" project-jdk-name="9" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
