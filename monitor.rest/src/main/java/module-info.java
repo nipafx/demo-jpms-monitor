@@ -1,6 +1,5 @@
 module monitor.rest {
+	requires transitive monitor.statistics;
 	requires spark.core;
-	requires monitor.statistics;
-
 	exports monitor.rest;
 }
