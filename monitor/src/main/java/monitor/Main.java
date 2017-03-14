@@ -2,7 +2,6 @@ package monitor;
 
 import monitor.observer.ServiceObserver;
 import monitor.observer.alpha.AlphaServiceObserver;
-import monitor.observer.beta.BetaServiceObserver;
 import monitor.persistence.StatisticsRepository;
 import monitor.rest.MonitorServer;
 import monitor.statistics.Statistician;
@@ -37,7 +36,7 @@ public class Main {
 	}
 
 	private static Monitor createMonitor() {
-		List<ServiceObserver> observers = Stream.of("alpha-1", "alpha-2", "alpha-3", "beta-1")
+		List<ServiceObserver> observers = Stream.of("alpha-1", "alpha-2", "alpha-3")
 				.map(Main::createObserver)
 				.flatMap(Optional::stream)
 				.collect(toList());
@@ -50,11 +49,7 @@ public class Main {
 
 	private static Optional<ServiceObserver> createObserver(String serviceName) {
 		return AlphaServiceObserver.createIfAlphaService(serviceName)
-				.or(() -> BetaServiceObserver.createIfBetaService(serviceName))
-				.or(() -> {
-					System.out.printf("No observer for %s found.%n", serviceName);
-					return Optional.empty();
-				});
+				.orElseThrow(IllegalArgumentException::new);
 	}
 
 }
