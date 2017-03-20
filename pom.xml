@@ -25,6 +25,7 @@
 		<module>monitor.persistence</module>
 		<module>monitor.rest</module>
 		<module>monitor.statistics</module>
+		<module>stats.fancy</module>
 	</modules>
 
 	<dependencyManagement>
@@ -70,6 +71,8 @@
 					<arguments>
 						<argument>--module-path=mods-mvn</argument>
 						<argument>--class-path=libs/*</argument>
+						<!-- add the optional dependency stats.fancy -->
+						<argument>--add-modules=stats.fancy</argument>
 						<argument>--module=monitor/monitor.Main</argument>
 					</arguments>
 				</configuration>

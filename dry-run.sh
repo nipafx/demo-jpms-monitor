@@ -14,16 +14,20 @@ echo ""
 if [ "$1" == "mvn" ]
 then
 # the classpath is needed for Spark's dependencies
+# add the optional dependency stats.fancy
 	$JAVA \
 		--module-path mods-mvn \
 		--class-path "libs/*" \
+		--add-modules stats.fancy \
 		--dry-run \
 		--module monitor
 else
 # the classpath is needed for Spark's dependencies
+# add the optional dependency stats.fancy
 	$JAVA \
 		--module-path mods \
 		--class-path "libs/*" \
+		--add-modules stats.fancy \
 		--dry-run \
 		--module monitor
 fi

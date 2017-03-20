@@ -43,6 +43,14 @@ $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
 
+echo " > creating stats.fancy"
+$JAVAC \
+	--module-path mods \
+	-d classes/stats.fancy \
+	$(find stats.fancy -name '*.java')
+$JAR --create \
+	--file mods/stats.fancy.jar \
+	-C classes/stats.fancy .
 
 echo " > creating monitor.statistics"
 $JAVAC \
