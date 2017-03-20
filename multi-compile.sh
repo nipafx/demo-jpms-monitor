@@ -42,6 +42,9 @@ $JAR --create \
 	--file mods/monitor.observer.gamma.jar \
 	-C classes/monitor.observer.gamma .
 $JAR --create \
+	--file mods/stats.fancy.jar \
+	-C classes/stats.fancy .
+$JAR --create \
 	--file mods/monitor.statistics.jar \
 	-C classes/monitor.statistics .
 $JAR --create \
