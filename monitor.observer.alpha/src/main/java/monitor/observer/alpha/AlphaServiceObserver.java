@@ -7,6 +7,8 @@ import java.time.ZonedDateTime;
 import java.util.Optional;
 import java.util.Random;
 
+import static monitor.observer.utils.ObserverUtil.byName;
+
 public class AlphaServiceObserver implements ServiceObserver {
 
 	private static final Random RANDOM = new Random();
@@ -20,7 +22,7 @@ public class AlphaServiceObserver implements ServiceObserver {
 	public static Optional<ServiceObserver> createIfAlphaService(String service) {
 		return Optional.of(service)
 				// this check should do something more sensible
-				.filter(s -> s.contains("alpha"))
+				.filter(byName("alpha"))
 				.map(AlphaServiceObserver::new);
 	}
 
