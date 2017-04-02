@@ -1,6 +1,6 @@
 # ServiceMonitor
 
-An example application for [_Java 9 Module System](https://git.manning.com/agileauthor/parlog).
+An example application for my book [_The Java 9 Module System_](https://www.manning.com/books/the-java-9-module-system?a_aid=nipa&a_bid=869915cb).
 The _Service Monitor_ is an application that observes a hypothetical network of microservices by
 
 * contacting individual services
@@ -15,7 +15,16 @@ Each module has its own directory that contains the known folder structure, e.g.
 ## Branches
 
 The master branch uses basic features, except where it has to use automatic and unnamed modules for the non-modularized dependencies (Spark, Hibernate).
-Other branches explore individual features of the module system.
+Other branches explore individual features of the module system:
+
+* [implied readability](../../tree/feature-implied-readability) aka `requires transitive`
+* [optional dependencies](../../tree/feature-optional-dependencies) aka `requires static`
+* [qualified exports](../../tree/feature-qualified-exports) aka `exports to`
+
+Then there are some branches that explore how things can break:
+
+* [duplicate modules](../../tree/break-duplicate-modules-even-if-unrequired) (not properly documented)
+* split package, on [compilation](../../tree/break-split-package-compilation) and [launch](../../tree/break-split-package-launch) (not properly documented)
 
 
 ## Setup
@@ -29,3 +38,6 @@ The root directory contains a number of shell scripts:
 * `multi-compile.sh`: compiles all modules at once
 * `dry-run`: launches the application with `--dry-run`, which aborts before calling the main method
 * `run`: launches the application
+
+To reduce setup efforts for IntelliJ users, I decided to leave my `.idea` folder in here.
+Let's see whether it helps...
