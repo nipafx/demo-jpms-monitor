@@ -25,6 +25,7 @@ Then there are some branches that explore how things can break:
 
 * [duplicate modules](../../tree/break-duplicate-modules-even-if-unrequired) (not properly documented)
 * split package, on [compilation](../../tree/break-split-package-compilation) and [launch](../../tree/break-split-package-launch) (not properly documented)
+* [missing transitive dependency](../../tree/break-missing-transitive-dependency) (not properly documented)
 
 
 ## Setup
