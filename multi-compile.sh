@@ -45,6 +45,10 @@ $JAR --create \
 	--file mods/monitor.rest.jar \
 	-C classes/monitor.rest .
 $JAR --create \
+	--file mods/monitor.peek.jar \
+	--main-class monitor.Peek \
+	-C classes/monitor.peek .
+$JAR --create \
 	--file mods/monitor.jar \
 	--main-class monitor.Main \
 	-C classes/monitor .

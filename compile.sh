@@ -73,6 +73,16 @@ $JAR --create \
 	--file mods/monitor.rest.jar \
 	-C classes/monitor.rest .
 
+echo " > creating monitor.peek"
+$JAVAC \
+	--module-path mods \
+	-d classes/monitor.peek \
+	$(find monitor.peek -name '*.java')
+$JAVA --create \
+	--file mods/monitor.peek.jar \
+	--main-class monitor.Peek \
+	-C classes/monitor.peek .
+
 echo " > creating monitor"
 $JAVAC \
 	--module-path mods \
