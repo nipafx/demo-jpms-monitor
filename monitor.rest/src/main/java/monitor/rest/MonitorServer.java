@@ -2,7 +2,6 @@ package monitor.rest;
 
 import monitor.statistics.Statistics;
 import monitor.statistics.Statistics.LivenessQuota;
-import spark.Spark;
 
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -23,7 +22,8 @@ public class MonitorServer {
 	}
 
 	public MonitorServer start() {
-		Spark.get("/statistics", (req, res) -> getStatisticsAsJson());
+//		Spark.get("/statistics", (req, res) -> getStatisticsAsJson());
+		System.out.println("Doesn't work due to dependencies on automatic modules.");
 		return this;
 	}
 
@@ -45,7 +45,8 @@ public class MonitorServer {
 
 
 	public MonitorServer shutdown() {
-		Spark.stop();
+//		Spark.stop();
+		System.out.println("Nothing to shut down...");
 		return this;
 	}
 

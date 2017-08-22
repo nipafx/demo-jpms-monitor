@@ -49,9 +49,6 @@ del sources.txt
 jar --create --file mods/monitor.persistence.jar -C classes/monitor.persistence .
 
 echo " > creating monitor.rest"
-rem spark is required as an automatic module, so copy it to mods
-copy /y libs\spark-core-* mods\
-ren mods\spark-core-*.jar spark.core.jar
 dir /S /B monitor.rest\src\*.java > sources.txt
 javac --module-path mods -d classes/monitor.rest @sources.txt
 del sources.txt

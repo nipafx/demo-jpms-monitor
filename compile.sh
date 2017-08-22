@@ -74,8 +74,6 @@ $JAR --create \
 	-C classes/monitor.persistence .
 
 echo " > creating monitor.rest"
-# spark is required as an automatic module, so copy it to mods
-cp libs/spark-core-* mods/spark.core.jar
 $JAVAC \
 	--module-path mods \
 	-d classes/monitor.rest \
