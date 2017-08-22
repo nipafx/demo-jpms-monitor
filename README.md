@@ -17,6 +17,7 @@ Each module has its own directory that contains the known folder structure, e.g.
 The master branch uses basic features, except where it has to use automatic and unnamed modules for the non-modularized dependencies (Spark, Hibernate).
 Other branches explore individual features of the module system:
 
+* [services](../../tree/feature-services) aka `provides ... with` and `uses`
 * [implied readability](../../tree/feature-implied-readability) aka `requires transitive`
 * [optional dependencies](../../tree/feature-optional-dependencies) aka `requires static`
 * [qualified exports](../../tree/feature-qualified-exports) aka `exports to`
