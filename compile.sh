@@ -40,7 +40,12 @@ $JAVAC \
 	-d classes/monitor.observer.beta \
 	$(find monitor.observer.beta -name '*.java')
 $JAR --create \
-	--file mods/monitor.observer.beta.jar \
+	--file mods/monitor.observer.beta-1.0.jar \
+	--module-version 1.0 \
+	-C classes/monitor.observer.beta .
+$JAR --create \
+	--file mods/monitor.observer.beta-2.0.jar \
+	--module-version 2.0 \
 	-C classes/monitor.observer.beta .
 
 
