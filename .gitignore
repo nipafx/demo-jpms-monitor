@@ -1,5 +1,38 @@
-.idea/workspace.xml
-.idea/kotlinc.xml
-/out
-/classes
-/mods
+# scripts
+classes/
+mods/
+
+### Maven ###
+target/
+mods-mvn/
+
+# Eclipse
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+*.launch
+.project
+.classpath
+
+# Intellij
+.idea
+*.iws
+out
+*.iml
+modules.xml
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
