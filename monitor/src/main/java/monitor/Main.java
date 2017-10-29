@@ -42,7 +42,7 @@ public class Main {
 				.load(ServiceObserverFactory.class).stream()
 				.map(Provider::get)
 				.collect(toList());
-		List<ServiceObserver> observers = Stream.of("alpha-1", "alpha-2", "alpha-3", "beta-1")
+		List<ServiceObserver> observers = Stream.of("0-patient", "alpha-1", "alpha-2", "alpha-3", "beta-1")
 				.map(serviceName -> createObserver(observerFactories, serviceName))
 				.flatMap(Optional::stream)
 				.collect(toList());

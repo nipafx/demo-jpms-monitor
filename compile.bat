@@ -27,6 +27,15 @@ javac --module-path mods -d classes/monitor.observer.beta @sources.txt
 del sources.txt
 jar --create --file mods/monitor.observer.beta.jar -C classes/monitor.observer.beta .
 
+echo " > creating monitor.observer.zero (plain JAR)"
+set JARS=
+for %%f in (mods\*.jar) do call set JARS=%%JARS%%;"%%f"
+dir /S /B monitor.observer.zero\src\*.java > sources.txt
+javac --class-path %JARS% -d classes/monitor.observer.zero @sources.txt
+xcopy monitor.observer.zero\src\main\resources classes\monitor.observer.zero /e
+del sources.txt
+jar --create --file mods/monitor.observer.zero.jar -C classes/monitor.observer.zero .
+
 echo " > creating monitor.statistics"
 dir /S /B monitor.statistics\src\*.java > sources.txt
 javac --module-path mods -d classes/monitor.statistics @sources.txt

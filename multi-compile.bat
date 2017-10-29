@@ -24,3 +24,14 @@ jar --create --file mods/monitor.statistics.jar -C classes/monitor.statistics .
 jar --create --file mods/monitor.persistence.jar -C classes/monitor.persistence .
 jar --create --file mods/monitor.rest.jar -C classes/monitor.rest .
 jar --create --file mods/monitor.jar --main-class monitor.Main -C classes/monitor .
+
+rem monitor.observer.zero is not a module, so it can't be added
+rem to thmulti-module compiler - do it separately instead
+echo " > building monitor.observer.zero (plain JAR)"
+set JARS=
+for %%f in (mods\*.jar) do call set JARS=%%JARS%%;"%%f"
+dir /S /B monitor.observer.zero\src\*.java > sources.txt
+javac --class-path %JARS% -d classes/monitor.observer.zero @sources.txt
+xcopy monitor.observer.zero\src\main\resources classes\monitor.observer.zero /e
+del sources.txt
+jar --create --file mods/monitor.observer.zero.jar -C classes/monitor.observer.zero .

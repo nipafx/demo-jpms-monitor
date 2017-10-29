@@ -44,6 +44,17 @@ $JAR --create \
 	-C classes/monitor.observer.beta .
 
 
+echo " > creating monitor.observer.zero (plain JAR)"
+$JAVAC \
+	--class-path 'mods/*' \
+	-d classes/monitor.observer.zero \
+	$(find monitor.observer.zero -name '*.java')
+cp -r monitor.observer.zero/src/main/resources/META-INF classes/monitor.observer.zero
+$JAR --create \
+	--file mods/monitor.observer.zero.jar \
+	-C classes/monitor.observer.zero .
+
+
 echo " > creating monitor.statistics"
 $JAVAC \
 	--module-path mods \

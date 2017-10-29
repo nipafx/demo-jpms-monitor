@@ -45,3 +45,8 @@ When it comes to building and executing these modules, the fact that there is no
 * The multi-compilation build needs `--add-modules=monitor.observer.alpha,monitor.observer.beta` to include them.
 * Maven builds them correctly as long as the parent POM mentions them, but without that dependency the `exec` plugin doesn't put the implementations on the module path when launching the app.
   This is less of a problem in this particular configuration, because `exec` is executed in the parent POM (instead of the module with the executable, which is more common).
+
+## Compatibility
+
+To demonstrate that services in plain JARs still work the way they used to, I created an additional service _monitor.observer.zero_.
+It uses `META-INF/services` to declare `ZeroObserverFactory`  and `run.sh` as well as Maven exec load it as an automatic module.
