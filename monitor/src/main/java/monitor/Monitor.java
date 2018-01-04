@@ -31,10 +31,10 @@ public class Monitor {
 	}
 
 	public void updateStatistics() {
-		List<DiagnosticDataPoint> newDataPoints = serviceObservers.stream()
+		List<DiagnosticDataPoint> newData = serviceObservers.stream()
 				.map(ServiceObserver::gatherDataFromService)
 				.collect(toList());
-		Statistics newStatistics = statistician.compute(currentStatistics, newDataPoints);
+		Statistics newStatistics = statistician.compute(currentStatistics, newData);
 		currentStatistics = newStatistics;
 		repository.store(newStatistics);
 	}

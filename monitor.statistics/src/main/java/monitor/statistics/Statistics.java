@@ -21,7 +21,7 @@ public class Statistics {
 		this.livenessQuotaByService = requireNonNull(livenessQuotaByService);
 	}
 
-	static Statistics create() {
+	static Statistics empty() {
 		return new Statistics(LivenessQuota.zero(), new HashMap<>());
 	}
 
