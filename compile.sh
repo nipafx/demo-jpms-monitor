@@ -44,12 +44,11 @@ $JAR --create \
 	-C classes/monitor.observer.beta .
 
 
-echo " > creating monitor.observer.zero (plain JAR)"
+echo " > creating monitor.observer.zero"
 $JAVAC \
-	--class-path 'mods/*' \
+	--module-path mods \
 	-d classes/monitor.observer.zero \
 	$(find monitor.observer.zero -name '*.java')
-cp -r monitor.observer.zero/src/main/resources/META-INF classes/monitor.observer.zero
 $JAR --create \
 	--file mods/monitor.observer.zero.jar \
 	-C classes/monitor.observer.zero .

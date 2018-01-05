@@ -52,6 +52,13 @@ echo ""
 echo "--- LIST MONITOR IMAGE MODULES ---"
 jdk-monitor/bin/java --list-modules
 
+# echo ""
+# echo "--- LAUNCH MONITOR IMAGE MODULES ---"
+# jdk-monitor/bin/monitor
+
 echo ""
-echo "--- LAUNCH MONITOR IMAGE MODULES ---"
-jdk-monitor/bin/monitor
+echo "--- LAUNCH MONITOR IMAGE MODULES WITH EXTERNAL OBSERVER ---"
+# without monitor.observer.zero, you can not observe service 0-patient
+jdk-monitor/bin/java \
+	--module-path mods/monitor.observer.zero.jar \
+	--module monitor

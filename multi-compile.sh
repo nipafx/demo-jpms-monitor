@@ -24,7 +24,7 @@ cp libs/spark-core-* mods/spark.core.jar
 $JAVAC \
 	--module-path mods \
 	--module-source-path "./*/src/main/java" \
-	--add-modules=monitor.observer.alpha,monitor.observer.beta \
+	--add-modules=monitor.observer.alpha,monitor.observer.beta,monitor.observer.zero \
 	-d classes \
 	--module monitor
 
@@ -39,6 +39,9 @@ $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
 $JAR --create \
+	--file mods/monitor.observer.zero.jar \
+	-C classes/monitor.observer.zero .
+$JAR --create \
 	--file mods/monitor.statistics.jar \
 	-C classes/monitor.statistics .
 $JAR --create \
@@ -51,15 +54,3 @@ $JAR --create \
 	--file mods/monitor.jar \
 	--main-class monitor.Main \
 	-C classes/monitor .
-
-# monitor.observer.zero is not a module, so it can't be added
-# to thmulti-module compiler - do it separately instead
-echo " > building monitor.observer.zero (plain JAR)"
-$JAVAC \
-	--class-path 'mods/*' \
-	-d classes/monitor.observer.zero \
-	$(find monitor.observer.zero -name '*.java')
-cp -r monitor.observer.zero/src/main/resources/META-INF classes/monitor.observer.zero
-$JAR --create \
-	--file mods/monitor.observer.zero.jar \
-	-C classes/monitor.observer.zero .
