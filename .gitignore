@@ -1,6 +1,7 @@
 # scripts
 classes/
 mods/
+jdk-*/
 
 ### Maven ###
 target/
