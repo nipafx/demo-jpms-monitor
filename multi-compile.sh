@@ -24,7 +24,7 @@ cp libs/spark-core-* mods/spark.core.jar
 $JAVAC \
 	--module-path mods \
 	--module-source-path "./*/src/main/java" \
-	--add-modules=monitor.observer.alpha,monitor.observer.beta \
+	--add-modules=monitor.observer.alpha,monitor.observer.beta,monitor.observer.gamma \
 	-d classes \
 	--module monitor
 
@@ -38,6 +38,9 @@ $JAR --create \
 $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
+$JAR --create \
+	--file mods/monitor.observer.gamma.jar \
+	-C classes/monitor.observer.gamma .
 $JAR --create \
 	--file mods/monitor.statistics.jar \
 	-C classes/monitor.statistics .

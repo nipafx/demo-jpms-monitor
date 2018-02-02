@@ -7,13 +7,15 @@ import monitor.statistics.Statistician;
 import monitor.statistics.Statistics;
 
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
 
 public class Monitor {
 
-	private final List<ServiceObserver> serviceObservers;
+	/** Use a concurrent list, so new observers can be added while statistics are updated */
+	private final CopyOnWriteArrayList<ServiceObserver> serviceObservers;
 	private final Statistician statistician;
 	private final StatisticsRepository repository;
 
@@ -24,10 +26,14 @@ public class Monitor {
 			Statistician statistician,
 			StatisticsRepository repository,
 			Statistics initialStatistics) {
-		this.serviceObservers = requireNonNull(serviceObservers);
+		this.serviceObservers = new CopyOnWriteArrayList<>(requireNonNull(serviceObservers));
 		this.statistician = requireNonNull(statistician);
 		this.repository = requireNonNull(repository);
 		this.currentStatistics = requireNonNull(initialStatistics);
+	}
+
+	public void addServiceObserver(ServiceObserver observer) {
+		serviceObservers.add(observer);
 	}
 
 	public void updateStatistics() {
@@ -42,5 +48,4 @@ public class Monitor {
 	public Statistics currentStatistics() {
 		return currentStatistics;
 	}
-
 }

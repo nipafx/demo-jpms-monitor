@@ -22,6 +22,7 @@
 		<module>monitor.observer</module>
 		<module>monitor.observer.alpha</module>
 		<module>monitor.observer.beta</module>
+		<module>monitor.observer.gamma</module>
 		<module>monitor.persistence</module>
 		<module>monitor.rest</module>
 		<module>monitor.statistics</module>

@@ -15,6 +15,8 @@ rm -rf classes
 mkdir classes
 rm -rf mods
 mkdir mods
+rm -rf mods-gamma
+mkdir mods-gamma
 
 echo " > creating monitor.observer"
 $JAVAC \
@@ -42,6 +44,16 @@ $JAVAC \
 $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
+
+
+echo " > creating monitor.observer.gamma"
+$JAVAC \
+	--module-path mods \
+	-d classes/monitor.observer.gamma \
+	$(find monitor.observer.gamma -name '*.java')
+$JAR --create \
+	--file mods-gamma/monitor.observer.gamma.jar \
+	-C classes/monitor.observer.gamma .
 
 
 echo " > creating monitor.statistics"
