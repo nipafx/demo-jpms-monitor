@@ -10,6 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<java>java</java>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>9</maven.compiler.source>
 		<maven.compiler.target>9</maven.compiler.target>
@@ -46,8 +47,6 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
-					<source>9</source>
-					<target>9</target>
 					<fork>true</fork>
 				</configuration>
 			</plugin>
@@ -65,52 +64,15 @@
 					</execution>
 				</executions>
 				<configuration>
-					<executable>java</executable>
+					<executable>${java}</executable>
 					<workingDirectory>.</workingDirectory>
 					<longModulepath>false</longModulepath>
 					<arguments>
-						<argument>--module-path</argument>
-						<argument>mods-mvn</argument>
-						<argument>--class-path</argument>
-						<argument>libs/*</argument>
-						<argument>--module</argument>
-						<argument>monitor/monitor.Main</argument>
+						<argument>--module-path=mods-mvn</argument>
+						<argument>--class-path=libs/*</argument>
+						<argument>--module=monitor/monitor.Main</argument>
 					</arguments>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>true</addMavenDescriptor>
-						<forced>false</forced>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<id>package-sources</id>
-						<goals>
-							<goal>jar</goal>
-							<goal>test-jar</goal>
-						</goals>
-						<phase>package</phase>
-						<inherited>true</inherited>
-						<configuration>
-							<attach>true</attach>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
