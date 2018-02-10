@@ -4,5 +4,6 @@ module monitor {
 	requires monitor.observer.beta;
 	requires monitor.statistics;
 	requires monitor.persistence;
+	requires monitor.resources;
 	requires monitor.rest;
 }

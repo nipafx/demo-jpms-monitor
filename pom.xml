@@ -23,6 +23,7 @@
 		<module>monitor.observer.alpha</module>
 		<module>monitor.observer.beta</module>
 		<module>monitor.persistence</module>
+		<module>monitor.resources</module>
 		<module>monitor.rest</module>
 		<module>monitor.statistics</module>
 	</modules>

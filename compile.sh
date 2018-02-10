@@ -16,6 +16,15 @@ mkdir classes
 rm -rf mods
 mkdir mods
 
+echo " > creating monitor.resources"
+$JAVAC \
+	-d classes/monitor.resources \
+	$(find monitor.resources -name '*.java')
+$JAR --create \
+	--file mods/monitor.resources.jar \
+	-C classes/monitor.resources . \
+	-C monitor.resources/src/main/resources .
+
 echo " > creating monitor.observer"
 $JAVAC \
 	-d classes/monitor.observer \

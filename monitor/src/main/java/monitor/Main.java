@@ -8,6 +8,7 @@ import monitor.rest.MonitorServer;
 import monitor.statistics.Statistician;
 import monitor.statistics.Statistics;
 
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Executors;
@@ -19,7 +20,9 @@ import static java.util.stream.Collectors.toList;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ReflectiveOperationException {
+		accessResources();
+
 		Monitor monitor = createMonitor();
 
 		MonitorServer server = MonitorServer
@@ -34,6 +37,34 @@ public class Main {
 				},
 				10,
 				TimeUnit.SECONDS);
+	}
+
+	private static void accessResources() throws ReflectiveOperationException {
+		URL closed = Class
+				.forName("monitor.resources.closed.Anchor")
+				.getResource("file.txt");
+		URL exported = Class
+				.forName("monitor.resources.exported.Anchor")
+				.getResource("file.txt");
+		URL opened = Class
+				.forName("monitor.resources.opened.Anchor")
+				.getResource("file.txt");
+		URL root = Class
+				.forName("monitor.resources.closed.Anchor")
+				.getResource("/file.txt");
+
+		URL meta = Class
+				.forName("monitor.resources.closed.Anchor")
+				.getResource("/META-INF/file.txt");
+
+		URL bytecode = Class
+				.forName("monitor.resources.opened.Anchor")
+				.getResource("Anchor.class");
+
+		String urls = String.format(
+				"closed: %s%nexported: %s%nopened: %s%nroot: %s%nmeta: %s%nbytecode: %s%n",
+				closed, exported, opened, root, meta, bytecode);
+		System.out.println(urls);
 	}
 
 	private static Monitor createMonitor() {
