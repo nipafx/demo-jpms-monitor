@@ -10,7 +10,10 @@ import monitor.statistics.Statistics;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +25,7 @@ public class Main {
 
 	public static void main(String[] args) throws ReflectiveOperationException {
 		accessResources();
+		accessResourceBundle();
 
 		Monitor monitor = createMonitor();
 
@@ -65,6 +69,24 @@ public class Main {
 				"closed: %s%nexported: %s%nopened: %s%nroot: %s%nmeta: %s%nbytecode: %s%n",
 				closed, exported, opened, root, meta, bytecode);
 		System.out.println(urls);
+	}
+
+	private static void accessResourceBundle() {
+		Locale english = new Locale("en");
+
+		printFromResourceBundle("monitor.resources.closed.messages", english, "text");
+		printFromResourceBundle("monitor.resources.exported.messages", english, "text");
+		printFromResourceBundle("monitor.resources.opened.messages", english, "text");
+		System.out.println();
+	}
+
+	private static void printFromResourceBundle(String bundle, Locale english, String property) {
+		try {
+			ResourceBundle messages = ResourceBundle.getBundle(bundle, english);
+			System.out.println(messages.getString(property));
+		} catch (MissingResourceException ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	private static Monitor createMonitor() {
