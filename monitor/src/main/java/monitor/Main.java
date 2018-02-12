@@ -8,6 +8,8 @@ import monitor.rest.MonitorServer;
 import monitor.statistics.Statistician;
 import monitor.statistics.Statistics;
 
+import java.lang.module.ModuleDescriptor;
+import java.lang.module.ModuleDescriptor.Version;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Executors;
@@ -20,6 +22,8 @@ import static java.util.stream.Collectors.toList;
 public class Main {
 
 	public static void main(String[] args) {
+		printModuleVersions();
+
 		Monitor monitor = createMonitor();
 
 		MonitorServer server = MonitorServer
@@ -34,6 +38,27 @@ public class Main {
 				},
 				10,
 				TimeUnit.SECONDS);
+	}
+
+	private static void printModuleVersions() {
+		Main.class
+				.getModule()
+				.getLayer()
+				.modules().stream()
+				.filter(module -> module.getName().startsWith("monitor"))
+				.forEach(Main::printModuleVersion);
+		System.out.println();
+	}
+
+	public static void printModuleVersion(Module module) {
+		System.out.printf("%s @ %s%n", module.getName(), module.getDescriptor().rawVersion().orElse("unknown"));
+		module
+				.getDescriptor()
+				.requires().stream()
+				.map(requires -> String.format("\t-> %s @ %s",
+						requires.name(),
+						requires.rawCompiledVersion().orElse("unknown")))
+				.forEach(System.out::println);
 	}
 
 	private static Monitor createMonitor() {
