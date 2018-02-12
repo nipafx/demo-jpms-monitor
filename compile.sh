@@ -22,6 +22,7 @@ $JAVAC \
 	$(find monitor.observer -name '*.java')
 $JAR --create \
 	--file mods/monitor.observer.jar \
+	--module-version 1.0 \
 	-C classes/monitor.observer .
 
 echo " > creating monitor.observer.alpha"
@@ -31,6 +32,7 @@ $JAVAC \
 	$(find monitor.observer.alpha -name '*.java')
 $JAR --create \
 	--file mods/monitor.observer.alpha.jar \
+	--module-version 1.0 \
 	-C classes/monitor.observer.alpha .
 
 
@@ -41,6 +43,7 @@ $JAVAC \
 	$(find monitor.observer.beta -name '*.java')
 $JAR --create \
 	--file mods/monitor.observer.beta.jar \
+	--module-version 1.0 \
 	-C classes/monitor.observer.beta .
 
 
@@ -51,6 +54,7 @@ $JAVAC \
 	$(find monitor.statistics -name '*.java')
 $JAR --create \
 	--file mods/monitor.statistics.jar \
+	--module-version 1.0 \
 	-C classes/monitor.statistics .
 
 echo " > creating monitor.persistence"
@@ -60,6 +64,7 @@ $JAVAC \
 	$(find monitor.persistence -name '*.java')
 $JAR --create \
 	--file mods/monitor.persistence.jar \
+	--module-version 1.0 \
 	-C classes/monitor.persistence .
 
 echo " > creating monitor.rest"
@@ -71,6 +76,7 @@ $JAVAC \
 	$(find monitor.rest -name '*.java')
 $JAR --create \
 	--file mods/monitor.rest.jar \
+	--module-version 1.0 \
 	-C classes/monitor.rest .
 
 echo " > creating monitor"
@@ -80,5 +86,6 @@ $JAVAC \
 	$(find monitor -name '*.java')
 $JAR --create \
 	--file mods/monitor.jar \
+	--module-version 1.0 \
 	--main-class monitor.Main \
 	-C classes/monitor .

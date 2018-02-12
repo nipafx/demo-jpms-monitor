@@ -28,23 +28,30 @@ $JAVAC \
 echo " > packaging modules"
 $JAR --create \
 	--file mods/monitor.observer.jar \
+	--module-version 1.0 \
 	-C classes/monitor.observer .
 $JAR --create \
 	--file mods/monitor.observer.alpha.jar \
+	--module-version 1.0 \
 	-C classes/monitor.observer.alpha .
 $JAR --create \
 	--file mods/monitor.observer.beta.jar \
+	--module-version 1.0 \
 	-C classes/monitor.observer.beta .
 $JAR --create \
 	--file mods/monitor.statistics.jar \
+	--module-version 1.0 \
 	-C classes/monitor.statistics .
 $JAR --create \
 	--file mods/monitor.persistence.jar \
+	--module-version 1.0 \
 	-C classes/monitor.persistence .
 $JAR --create \
 	--file mods/monitor.rest.jar \
+	--module-version 1.0 \
 	-C classes/monitor.rest .
 $JAR --create \
 	--file mods/monitor.jar \
+	--module-version 1.0 \
 	--main-class monitor.Main \
 	-C classes/monitor .
