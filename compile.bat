@@ -25,7 +25,8 @@ echo " > creating monitor.observer.beta"
 dir /S /B monitor.observer.beta\src\*.java > sources.txt
 javac --module-path mods -d classes/monitor.observer.beta @sources.txt
 del sources.txt
-jar --create --file mods/monitor.observer.beta.jar -C classes/monitor.observer.beta .
+jar --create --file mods/monitor.observer.beta-1.0.jar --module-version 1.0 -C classes/monitor.observer.beta .
+jar --create --file mods/monitor.observer.beta-2.0.jar --module-version 2.0 -C classes/monitor.observer.beta .
 
 echo " > creating monitor.statistics"
 dir /S /B monitor.statistics\src\*.java > sources.txt

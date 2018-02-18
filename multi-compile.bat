@@ -17,7 +17,8 @@ javac --module-path mods --module-source-path "./*/src/main/java" -d classes --m
 echo " > packaging modules"
 jar --create --file mods/monitor.observer.jar -C classes/monitor.observer .
 jar --create --file mods/monitor.observer.alpha.jar -C classes/monitor.observer.alpha .
-jar --create --file mods/monitor.observer.beta.jar -C classes/monitor.observer.beta .
+jar --create --file mods/monitor.observer.beta-1.0.jar --module-version 1.0 -C classes/monitor.observer.beta .
+jar --create --file mods/monitor.observer.beta-2.0.jar --module-version 2.0 -C classes/monitor.observer.beta .
 jar --create --file mods/monitor.statistics.jar -C classes/monitor.statistics .
 jar --create --file mods/monitor.persistence.jar -C classes/monitor.persistence .
 jar --create --file mods/monitor.rest.jar -C classes/monitor.rest .

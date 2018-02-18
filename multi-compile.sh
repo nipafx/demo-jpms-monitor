@@ -33,7 +33,12 @@ $JAR --create \
 	--file mods/monitor.observer.alpha.jar \
 	-C classes/monitor.observer.alpha .
 $JAR --create \
-	--file mods/monitor.observer.beta.jar \
+	--file mods/monitor.observer.beta-1.0.jar \
+	--module-version 1.0 \
+	-C classes/monitor.observer.beta .
+$JAR --create \
+	--file mods/monitor.observer.beta-2.0.jar \
+	--module-version 2.0 \
 	-C classes/monitor.observer.beta .
 $JAR --create \
 	--file mods/monitor.statistics.jar \
