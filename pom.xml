@@ -22,6 +22,8 @@
 		<module>monitor.observer</module>
 		<module>monitor.observer.alpha</module>
 		<module>monitor.observer.beta</module>
+		<module>monitor.observer.gamma</module>
+		<module>monitor.observer.zero</module>
 		<module>monitor.persistence</module>
 		<module>monitor.rest</module>
 		<module>monitor.statistics</module>
@@ -70,6 +72,13 @@
 					<arguments>
 						<argument>--module-path=mods-mvn</argument>
 						<argument>--class-path=libs/*</argument>
+						<!-- because spark.core is an automatic module and actually required,
+								monitor.observer.zero would be resolved as well and does not need
+								to be added explicitly;
+								I still wanted to do it for clarity, but for some reason that results
+								in "java.lang.module.FindException: Module monitor.observer.zero not found";
+								strange... -->
+						<!--<argument>&#45;&#45;add-modules=monitor.observer.zero</argument>-->
 						<argument>--module=monitor/monitor.Main</argument>
 					</arguments>
 				</configuration>

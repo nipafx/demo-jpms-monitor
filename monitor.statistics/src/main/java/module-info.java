@@ -1,4 +1,4 @@
 module monitor.statistics {
-	requires transitive monitor.observer;
+	requires monitor.observer;
 	exports monitor.statistics;
 }

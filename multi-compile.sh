@@ -19,9 +19,12 @@ mkdir mods
 echo " > multi-compiling modules"
 # spark is required as an automatic module, so copy it to mods
 cp libs/spark-core-* mods/spark.core.jar
+# since the monitor services are not required (directly or indirectly)
+# from the root module monitor, they are added manually
 $JAVAC \
 	--module-path mods \
 	--module-source-path "./*/src/main/java" \
+	--add-modules=monitor.observer.alpha,monitor.observer.beta,monitor.observer.gamma \
 	-d classes \
 	--module monitor
 
@@ -36,6 +39,9 @@ $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
 $JAR --create \
+	--file mods/monitor.observer.gamma.jar \
+	-C classes/monitor.observer.gamma .
+$JAR --create \
 	--file mods/monitor.statistics.jar \
 	-C classes/monitor.statistics .
 $JAR --create \
@@ -45,10 +51,18 @@ $JAR --create \
 	--file mods/monitor.rest.jar \
 	-C classes/monitor.rest .
 $JAR --create \
-	--file mods/monitor.peek.jar \
-	--main-class monitor.Peek \
-	-C classes/monitor.peek .
-$JAR --create \
 	--file mods/monitor.jar \
 	--main-class monitor.Main \
 	-C classes/monitor .
+
+# monitor.observer.zero is not a module, so it can't be added
+# to thmulti-module compiler - do it separately instead
+echo " > building monitor.observer.zero (plain JAR)"
+$JAVAC \
+	--class-path 'mods/*' \
+	-d classes/monitor.observer.zero \
+	$(find monitor.observer.zero -name '*.java')
+cp -r monitor.observer.zero/src/main/resources/META-INF classes/monitor.observer.zero
+$JAR --create \
+	--file mods/monitor.observer.zero.jar \
+	-C classes/monitor.observer.zero .
