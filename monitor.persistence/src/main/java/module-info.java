@@ -1,4 +1,4 @@
 module monitor.persistence {
-	requires transitive monitor.statistics;
+	requires monitor.statistics;
 	exports monitor.persistence;
 }

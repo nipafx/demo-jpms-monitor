@@ -36,6 +36,9 @@ $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
 $JAR --create \
+	--file mods/stats.fancy.jar \
+	-C classes/stats.fancy .
+$JAR --create \
 	--file mods/monitor.statistics.jar \
 	-C classes/monitor.statistics .
 $JAR --create \
@@ -44,10 +47,6 @@ $JAR --create \
 $JAR --create \
 	--file mods/monitor.rest.jar \
 	-C classes/monitor.rest .
-$JAR --create \
-	--file mods/monitor.peek.jar \
-	--main-class monitor.Peek \
-	-C classes/monitor.peek .
 $JAR --create \
 	--file mods/monitor.jar \
 	--main-class monitor.Main \

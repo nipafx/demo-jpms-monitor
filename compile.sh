@@ -43,6 +43,14 @@ $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
 
+echo " > creating stats.fancy"
+$JAVAC \
+	--module-path mods \
+	-d classes/stats.fancy \
+	$(find stats.fancy -name '*.java')
+$JAR --create \
+	--file mods/stats.fancy.jar \
+	-C classes/stats.fancy .
 
 echo " > creating monitor.statistics"
 $JAVAC \
@@ -72,16 +80,6 @@ $JAVAC \
 $JAR --create \
 	--file mods/monitor.rest.jar \
 	-C classes/monitor.rest .
-
-echo " > creating monitor.peek"
-$JAVAC \
-	--module-path mods \
-	-d classes/monitor.peek \
-	$(find monitor.peek -name '*.java')
-$JAR --create \
-	--file mods/monitor.peek.jar \
-	--main-class monitor.Peek \
-	-C classes/monitor.peek .
 
 echo " > creating monitor"
 $JAVAC \
