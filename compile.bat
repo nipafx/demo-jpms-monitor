@@ -48,6 +48,12 @@ javac --module-path mods -d classes/monitor.rest @sources.txt
 del sources.txt
 jar --create --file mods/monitor.rest.jar -C classes/monitor.rest .
 
+echo " > creating monitor.peek"
+dir /S /B monitor.peek\src\*.java > sources.txt
+javac --module-path mods -d classes/monitor.peek @sources.txt
+del sources.txt
+jar --create --file mods/monitor.peek.jar --main-class monitor.Peek -C classes/monitor.peek .
+
 echo " > creating monitor"
 dir /S /B monitor\src\*.java > sources.txt
 javac --module-path mods -d classes/monitor @sources.txt

@@ -1,4 +1,4 @@
 module monitor.observer.alpha {
-	requires monitor.observer;
+	requires transitive monitor.observer;
 	exports monitor.observer.alpha;
 }

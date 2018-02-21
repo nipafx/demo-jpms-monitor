@@ -21,4 +21,5 @@ jar --create --file mods/monitor.observer.beta.jar -C classes/monitor.observer.b
 jar --create --file mods/monitor.statistics.jar -C classes/monitor.statistics .
 jar --create --file mods/monitor.persistence.jar -C classes/monitor.persistence .
 jar --create --file mods/monitor.rest.jar -C classes/monitor.rest .
+jar --create --file mods/monitor.peek.jar --main-class monitor.Peek -C classes/monitor.peek .
 jar --create --file mods/monitor.jar --main-class monitor.Main -C classes/monitor .
