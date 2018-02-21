@@ -40,6 +40,10 @@ del sources.txt
 jar --create --file mods/monitor.persistence.jar -C classes/monitor.persistence .
 
 echo " > creating monitor.rest"
+rem delete monitor.observer.alpha to tease out a compile error; we have:
+rem "rest requires statistics requires transitive alpha"
+rem with alpha missing the compiler errors out
+del mods\monitor.observer.alpha.jar
 rem spark is required as an automatic module, so copy it to mods
 copy /y libs\spark-core-* mods\
 ren mods\spark-core-*.jar spark.core.jar

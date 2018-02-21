@@ -63,6 +63,10 @@ $JAR --create \
 	-C classes/monitor.persistence .
 
 echo " > creating monitor.rest"
+# delete monitor.observer.alpha to tease out a compile error; we have:
+# 	"rest requires statistics requires transitive alpha"
+# with alpha missing the compiler errors out
+rm mods/monitor.observer.alpha.jar
 # spark is required as an automatic module, so copy it to mods
 cp libs/spark-core-* mods/spark.core.jar
 $JAVAC \
