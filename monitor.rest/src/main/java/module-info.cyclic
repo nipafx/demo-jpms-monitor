@@ -1,0 +1,8 @@
+module monitor.rest {
+	requires spark.core;
+	requires monitor.statistics;
+	// dependency on persistence creates cycle
+	requires monitor.persistence;
+
+	exports monitor.rest;
+}

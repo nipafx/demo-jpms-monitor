@@ -48,3 +48,5 @@ $JAR --create \
 	--file mods/monitor.jar \
 	--main-class monitor.Main \
 	-C classes/monitor .
+
+sh compile-cyclic.sh

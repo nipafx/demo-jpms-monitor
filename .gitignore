@@ -1,6 +1,7 @@
 # scripts
 classes/
 mods/
+mods-cyclic/
 
 ### Maven ###
 target/

@@ -1,0 +1,7 @@
+module monitor.persistence {
+	requires monitor.statistics;
+	// dependency on rest creates cycle
+	requires monitor.rest;
+
+	exports monitor.persistence;
+}

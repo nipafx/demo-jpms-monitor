@@ -15,6 +15,8 @@ rm -rf classes
 mkdir classes
 rm -rf mods
 mkdir mods
+rm -rf mods-cyclic
+mkdir mods-cyclic
 
 echo " > creating monitor.observer"
 $JAVAC \
@@ -82,3 +84,5 @@ $JAR --create \
 	--file mods/monitor.jar \
 	--main-class monitor.Main \
 	-C classes/monitor .
+
+sh compile-cyclic.sh
