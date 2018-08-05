@@ -17,7 +17,7 @@ then
 	$JAVA \
 		--module-path mods-mvn \
 		--class-path "libs/*" \
-		--module monitor
+		--module monitor/monitor.Main
 else
 # the classpath is needed for Spark's dependencies
 	$JAVA \
