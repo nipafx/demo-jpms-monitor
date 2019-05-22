@@ -52,8 +52,8 @@ $JAR --create \
 	--main-class monitor.Main \
 	-C classes/monitor .
 
-# monitor.observer.zero is not a module, so it can't be added
-# to thmulti-module compiler - do it separately instead
+# monitor.observer.zero is not a module, so it can't be included
+# in the multi-module compilation - do it separately instead
 echo " > building monitor.observer.zero (plain JAR)"
 $JAVAC \
 	--class-path 'mods/*' \
