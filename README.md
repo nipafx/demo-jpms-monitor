@@ -62,7 +62,7 @@ Then you can add it to your IDE (how-to for [IntelliJ](https://www.jetbrains.com
 ### IDEs and Build Tools
 
 This is a multi-module Maven project, which your IDE should be able to import.
-You should use at least Intellij IDEA 2017.2, Eclipse Oxygen.1a, or NetBeans 9. 
+You should use at least IntelliJ IDEA 2017.2, Eclipse Oxygen.1a, or NetBeans 9.
 If you're using Maven directly, make sure you have 3.5.0 or higher.
 
 
@@ -94,3 +94,5 @@ The root directory contains a number of Windows batch and Linux shell scripts:
 * `multi-compile`: compiles all modules at once
 * `dry-run`: launches the application with `--dry-run`, which aborts before calling the main method
 * `run`: launches the application
+
+Before you can use them, you need to run `mvn install` once, so Maven can download the dependencies and copy them into the `libs` folder.
