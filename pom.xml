@@ -133,8 +133,8 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>copy-installed</id>
-								<phase>install</phase>
+								<id>copy-packaged</id>
+								<phase>package</phase>
 								<goals>
 									<goal>copy</goal>
 								</goals>
