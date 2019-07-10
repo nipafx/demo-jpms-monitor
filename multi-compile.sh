@@ -19,9 +19,12 @@ mkdir mods
 echo " > multi-compiling modules"
 # spark is required as an automatic module, so copy it to mods
 cp libs/spark-core-* mods/spark.core.jar
+# since the monitor services are not required (directly or indirectly)
+# from the root module monitor, they are added manually
 $JAVAC \
 	--module-path mods \
 	--module-source-path "./*/src/main/java" \
+	--add-modules=monitor.observer.alpha,monitor.observer.beta,monitor.observer.gamma \
 	-d classes \
 	--module monitor
 
@@ -35,6 +38,12 @@ $JAR --create \
 $JAR --create \
 	--file mods/monitor.observer.beta.jar \
 	-C classes/monitor.observer.beta .
+$JAR --create \
+	--file mods/monitor.observer.gamma.jar \
+	-C classes/monitor.observer.gamma .
+$JAR --create \
+	--file mods/stats.fancy.jar \
+	-C classes/stats.fancy .
 $JAR --create \
 	--file mods/monitor.statistics.jar \
 	-C classes/monitor.statistics .

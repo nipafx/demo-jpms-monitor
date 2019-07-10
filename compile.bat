@@ -27,6 +27,18 @@ javac --module-path mods -d classes/monitor.observer.beta @sources.txt
 del sources.txt
 jar --create --file mods/monitor.observer.beta.jar -C classes/monitor.observer.beta .
 
+echo " > creating monitor.observer.gamma"
+dir /S /B monitor.observer.gamma\src\*.java > sources.txt
+javac --module-path mods -d classes/monitor.observer.gamma @sources.txt
+del sources.txt
+jar --create --file mods/monitor.observer.gamma.jar -C classes/monitor.observer.gamma .
+
+echo " > creating stats.fancy"
+dir /S /B stats.fancy\src\*.java > sources.txt
+javac --module-path mods -d classes/stats.fancy @sources.txt
+del sources.txt
+jar --create --file mods/stats.fancy.jar -C classes/stats.fancy .
+
 echo " > creating monitor.statistics"
 dir /S /B monitor.statistics\src\*.java > sources.txt
 javac --module-path mods -d classes/monitor.statistics @sources.txt

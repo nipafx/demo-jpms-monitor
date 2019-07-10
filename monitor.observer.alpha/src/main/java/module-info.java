@@ -1,4 +1,5 @@
 module monitor.observer.alpha {
 	requires monitor.observer;
-	exports monitor.observer.alpha;
+	provides monitor.observer.ServiceObserverFactory
+		with monitor.observer.alpha.AlphaServiceObserverFactory;
 }

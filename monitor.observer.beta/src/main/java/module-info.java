@@ -1,4 +1,5 @@
 module monitor.observer.beta {
 	requires monitor.observer;
-	exports monitor.observer.beta;
+	provides monitor.observer.ServiceObserverFactory
+		with monitor.observer.beta.BetaServiceObserverFactory;
 }

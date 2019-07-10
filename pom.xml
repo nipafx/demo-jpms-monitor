@@ -12,9 +12,9 @@
 	<properties>
 		<java>java</java>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>9</maven.compiler.source>
-		<maven.compiler.target>9</maven.compiler.target>
-		<maven.compiler.release>9</maven.compiler.release>
+		<maven.compiler.source>12</maven.compiler.source>
+		<maven.compiler.target>12</maven.compiler.target>
+		<maven.compiler.release>12</maven.compiler.release>
 	</properties>
 
 	<modules>
@@ -22,9 +22,11 @@
 		<module>monitor.observer</module>
 		<module>monitor.observer.alpha</module>
 		<module>monitor.observer.beta</module>
+		<module>monitor.observer.gamma</module>
 		<module>monitor.persistence</module>
 		<module>monitor.rest</module>
 		<module>monitor.statistics</module>
+		<module>stats.fancy</module>
 	</modules>
 
 	<dependencyManagement>
@@ -32,7 +34,7 @@
 			<dependency>
 				<groupId>com.sparkjava</groupId>
 				<artifactId>spark-core</artifactId>
-				<version>2.7.1</version>
+				<version>2.9.1</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -41,11 +43,11 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.1.0</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.8.1</version>
 				<configuration>
 					<fork>true</fork>
 				</configuration>
@@ -70,6 +72,8 @@
 					<arguments>
 						<argument>--module-path=mods-mvn</argument>
 						<argument>--class-path=libs/*</argument>
+						<!-- add the optional dependency stats.fancy -->
+						<argument>--add-modules=stats.fancy</argument>
 						<argument>--module=monitor/monitor.Main</argument>
 					</arguments>
 				</configuration>
@@ -90,7 +94,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-clean-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>3.1.0</version>
 						<configuration>
 							<filesets>
 								<fileset>
@@ -117,7 +121,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-dependency-plugin</artifactId>
-						<version>3.0.2</version>
+						<version>3.1.1</version>
 						<executions>
 							<execution>
 								<id>copy-dependencies</id>
@@ -133,8 +137,8 @@
 								</configuration>
 							</execution>
 							<execution>
-								<id>copy-installed</id>
-								<phase>install</phase>
+								<id>copy-packaged</id>
+								<phase>package</phase>
 								<goals>
 									<goal>copy</goal>
 								</goals>
